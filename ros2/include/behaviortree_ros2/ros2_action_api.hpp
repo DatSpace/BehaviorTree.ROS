@@ -113,7 +113,7 @@ class ActionClientApi final : public ActionClientInterface<ActionT> {
       auto options = ActionGoalOptions{};
       // Create response callback
       options.goal_response_callback =
-          [=, this](std::shared_ptr<ActionGoalHandle> const goal_handle) {
+          [=](std::shared_ptr<ActionGoalHandle> const goal_handle) {
             if (goal_handle == nullptr) {
               // If the goal is not accepted we mark the action as inactive
               RCLCPP_ERROR_STREAM(node_->get_logger(),
