@@ -14,14 +14,13 @@ set(THIS_PACKAGE_INCLUDE_DEPENDS
   rclcpp_action
 )
 
-if(BUILD_EXAMPLE)
 add_executable(bt_executable
     examples/fibonacci_bt.cpp
 )
 target_include_directories(bt_executable PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(bt_executable PUBLIC cxx_std_20)
+target_compile_features(bt_executable PUBLIC cxx_std_17)
 ament_target_dependencies(bt_executable
   PUBLIC
     ${THIS_PACKAGE_INCLUDE_DEPENDS}
@@ -36,7 +35,6 @@ install(
   RUNTIME DESTINATION
     lib/${PROJECT_NAME}
 )
-endif()
 
 install(
   DIRECTORY include/
